@@ -7,9 +7,13 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Make bodyParser work
-app.use(bodyParser.urlencode({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Search for and find the routes
-require("./routing/apiRoutes")(app);
-require("./routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
+
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
+});
