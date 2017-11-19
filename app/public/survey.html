@@ -137,12 +137,12 @@
         var surveyRes = {
           "name": $('#name').val().trim(),
           "photo": $('#imgLink').val().trim(),
-          "scores": []
+          "scores": [$('#custom1').val(), $('#custom2').val(), $('#custom3').val(), $('#custom4').val(), $('#custom5').val(), $('#custom5').val(), $('#custom6').val(), $('#custom7').val(), $('#custom8').val(), $('#custom9').val(), $('#custom10').val()]
         };
 
-        for (var i = 1; i <= 10; i++) {
-          surveyRes.scores.push($('#custom'+i).val());
-        };
+        // for (var i = 1; i <= 10; i++) {
+        //   surveyRes.scores.push($('#custom'+i).val());
+        // };
 
         // console.log(surveyRes);
 

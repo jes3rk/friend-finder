@@ -11,11 +11,12 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
 
     var survey = req.body;
+    var surveyScores = req.body["scores[]"];
     var comp = [];
 
     for (var i = 0; i < friendData.length; i++) {
-      for (var j = 0; j < friendData[i].scores.length; j++) {
-        var diff = Math.abs(survey.scores[j] - friendData[i].scores[j]);
+      for (var j = 0; j <= 10; j++) {
+        var diff = Math.abs(surveyScores[j] - friendData[i].scores[j]);
         comp.push(diff);
       };
     };
