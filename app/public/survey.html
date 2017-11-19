@@ -143,6 +143,7 @@
         for (var i = 1; i <= 10; i++) {
           surveyRes.scores.push($('#custom'+i).val());
         };
+
         // console.log(surveyRes);
 
         $.post("/api/friends", surveyRes, function(data) {
@@ -151,6 +152,13 @@
           } else {
             console.log("Error in submission");
           };
+        });
+
+        $.ajax({
+          url: window.location.origin + "/api/friends",
+          method: "GET"
+        }).done(function(friendData) {
+          console.log(friendData);
         });
       });
 
