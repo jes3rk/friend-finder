@@ -125,9 +125,27 @@
           <option value="5">5 (strongly agree)</option>
         </select>
         <br><br><br>
+        <img src="" alt="">
         <button type="submit" id="submit" class="btn btn-primary">Submit</button>
       </form>
       <br><br><br>
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script type="text/javascript">
 
@@ -139,16 +157,6 @@
           "photo": $('#imgLink').val().trim(),
           "scores": [$('#custom1').val(), $('#custom2').val(), $('#custom3').val(), $('#custom4').val(), $('#custom5').val(), $('#custom6').val(), $('#custom7').val(), $('#custom8').val(), $('#custom9').val(), $('#custom10').val()]
         };
-
-        // console.log(surveyRes);
-
-        // $.post("/api/friends", surveyRes, function(data) {
-        //   if (data) {
-        //     console.log("Submitted");
-        //   } else {
-        //     console.log("Error in submission");
-        //   };
-        // });
 
         $.ajax({
           url: "/api/friends",
@@ -162,6 +170,17 @@
           method: "GET"
         }).done(function(friendData) {
           console.log(friendData);
+          // Setup Modal
+          $('.modal-title').text("You've been matched with " + friendData.name);
+          var body = $('.modal-body');
+          var matchImg = $('<img>');
+          matchImg.attr({
+            "src": friendData.photo,
+            "alt": "Picture of " + friendData.name,
+            "style": "width: 100%"
+          });
+          body.append(matchImg);
+          $('.modal').modal('toggle');
         });
       });
 

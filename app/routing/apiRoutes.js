@@ -22,10 +22,11 @@ module.exports = function(app) {
       };
       comp.push(diff);
     };
-    var min = Math.min(comp);
+    // Return the min value from the comparison array
+    var min = Math.min.apply(null, comp);
+    // Return the index of the min value from above
     var indexMin = comp.indexOf(min);
     output = friendData[indexMin];
     friendData.push(survey);
-    // output = friendData;
   });
 };
