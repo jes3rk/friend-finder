@@ -11,9 +11,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Search for and find the routes
-require("./app/routing/apiRoutes.js")(app);
-require("./app/routing/htmlRoutes.js")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
+// Listener
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });

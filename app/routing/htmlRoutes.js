@@ -8,7 +8,7 @@ module.exports = function(app) {
   });
 
 // Route to survey page
-  app.get("/survey", function(res, req) {
+  app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
 };
